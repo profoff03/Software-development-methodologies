@@ -1,5 +1,5 @@
-class Deadline:
-    def __init__(self, id, start_date, end_date):
+class Responsible:
+    def __init__(self, id, name, contact_info):
         self.id = id
-        self.start_date = start_date
-        self.end_date = end_date
+        self.name = name
+        self.contact_info = contact_info
