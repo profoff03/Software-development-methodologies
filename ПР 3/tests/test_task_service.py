@@ -15,21 +15,25 @@ class TestTaskService(unittest.TestCase):
         self.task = Task(1, "Task 1", "Description 1", self.deadline, self.responsible, self.status)
 
     def test_change_task_status_valid(self):
+        """Проверяет успешное изменение статуса задачи на допустимый."""
         result = self.task_service.change_task_status(self.task, Status("Готова к выполнению"))
         self.assertTrue(result)
         self.assertEqual(self.task.status, Status("Готова к выполнению"))
 
     def test_change_task_status_invalid(self):
+        """Проверяет, что нельзя изменить статус задачи на недопустимый."""
         result = self.task_service.change_task_status(self.task, Status("Invalid Status"))
         self.assertFalse(result)
         self.assertEqual(self.task.status, self.status)
 
     def test_complete_task_success(self):
+        """Проверяет успешное завершение задачи."""
         result = self.task_service.complete_task(self.task)
         self.assertTrue(result)
         self.assertEqual(self.task.status, Status("Завершена"))
 
     def test_complete_task_invalid_status(self):
+        """Проверяет, что нельзя завершить задачу, если ее статус не 'В процессе'."""
         self.task.status = Status("Готова к выполнению")
         result = self.task_service.complete_task(self.task)
         self.assertFalse(result)
