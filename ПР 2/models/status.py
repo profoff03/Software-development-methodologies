@@ -1,4 +1,5 @@
+from dataclasses import dataclass
+
+@dataclass(frozen=True)
 class Status:
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
+    name: str

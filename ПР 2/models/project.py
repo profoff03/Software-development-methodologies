@@ -10,3 +10,8 @@ class Project:
 
     def get_tasks(self):
         return self.tasks
+    
+    def __eq__(self, other):
+        if not isinstance(other, Project):
+            return False
+        return (self.id, self.name, self.description) == (other.id, other.name, other.description)
