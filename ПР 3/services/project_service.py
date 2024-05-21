@@ -1,6 +1,7 @@
 from typing import Optional
 from models.project import Project
 
+
 class ProjectService:
     def __init__(self):
         self.projects = []
