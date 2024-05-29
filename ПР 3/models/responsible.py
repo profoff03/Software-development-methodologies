@@ -1,4 +1,9 @@
-class Responsible:
-    def __init__(self, name, contact_info):
-        self.name = name
-        self.contact_info = contact_info
+from sqlalchemy import Column, Integer, String
+from models.base import Base
+
+
+class Responsible(Base):
+    __tablename__ = 'responsibles'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String)
+    contact_info = Column(String)
