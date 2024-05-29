@@ -1,7 +1,10 @@
-from dataclasses import dataclass
+from sqlalchemy import Column, Integer, Date
+from models.base import Base
 
 
-@dataclass(frozen=True)
-class Deadline:
-    start_date: str
-    end_date: str
+class Deadline(Base):
+    __tablename__ = 'deadlines'
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    object_id = Column(Integer)
+    start_date = Column(Date)
+    end_date = Column(Date)

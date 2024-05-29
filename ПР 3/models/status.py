@@ -1,6 +1,7 @@
-from dataclasses import dataclass
+from sqlalchemy import Column, String
+from models.base import Base
 
 
-@dataclass(frozen=True)
-class Status:
-    name: str
+class Status(Base):
+    __tablename__ = 'statuses'
+    name = Column(String, primary_key=True)

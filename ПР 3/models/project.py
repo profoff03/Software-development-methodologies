@@ -1,16 +1,13 @@
-from typing import List
-from models.task import Task
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
+from models.base import Base
+from typing import List, Dict, Any
+from dataclasses import dataclass, field
 
-class Project:
-    def __init__(self, project_id, name, description):
-        self.project_id = project_id
-        self.name = name
-        self.description = description
-        self.tasks = List[Task]
 
-    def add_task(self, task):
-        if isinstance(task, Task):
-            self.tasks.append(task)
-        else:
-            raise ValueError("Only instances of Task class can be added to the project")
-
+class Project(Base):
+    __tablename__ = 'projects'
+    project_id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String, nullable=False)
+    description = Column(String, nullable=True)
+    tasks = relationship('Task', back_populates='project')
